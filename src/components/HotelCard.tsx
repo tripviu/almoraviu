@@ -1,32 +1,33 @@
-"use client";
-
 import Stars from "./Stars";
 import Badge from "./Badge";
-import { startLocalBooking } from "@/lib/checkout";
 
-type Props = {
-  hotel: { id:string; name:string; city:string; country:string; stars?:number; priceFrom?:number; halalScore:number; partnerUrl:string; };
-};
-
-export default function HotelCard({ hotel: h }: Props) {
+export default function HotelCard({hotel: h}:{hotel:any}){
   return (
-    <div className="bg-white rounded-xl border shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-      <a href={`/hotels/${h.id}`} className="block">
-        <div className="h-44 bg-gradient-to-br from-emerald-100 to-yellow-50" />
-      </a>
+    <a href={`/hotels/${h.id}`} className="tv-card tv-card-hover block overflow-hidden">
+      {/* Header image */}
+      <div className="h-44 bg-center bg-cover" style={{ backgroundImage: `url(${(h.images && h.images[0]) || "https://source.unsplash.com/960x640/?hotel,resort"})` }} />
       <div className="p-4">
-        <div className="flex items-center justify-between">
-          <a href={`/hotels/${h.id}`} className="text-lg font-semibold hover:underline">{h.name}</a>
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <div className="text-lg font-semibold">{h.name}</div>
+            <div className="text-sm" style={{color:'var(--tv-muted)'}}>{h.city}, {h.country}</div>
+          </div>
           <Stars value={h.stars ?? 0} />
         </div>
-        <div className="text-sm text-gray-600">{h.city}, {h.country}</div>
-        <div className="mt-2 text-sm">From <span className="font-semibold">€{h.priceFrom ?? "-"}</span></div>
-        <div className="mt-3 flex flex-wrap gap-2"><Badge>Halal score: <strong>{h.halalScore}/5</strong></Badge></div>
-        <div className="mt-4 flex gap-3">
-          <a href={`/hotels/${h.id}`} className="inline-block border rounded-md px-4 py-2 text-gray-800 hover:bg-gray-50">Details</a>
-          <button onClick={() => startLocalBooking(h.id)} className="inline-block bg-black text-white rounded-md px-4 py-2 hover:opacity-90">Boek nu</button>
+
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Badge>Halal {h.halalScore}/5</Badge>
+          {h.amenities?.halalFood && <span className="tv-chip">Halal food</span>}
+          {h.amenities?.noAlcohol && <span className="tv-chip">No alcohol</span>}
+          {h.amenities?.prayerRoom && <span className="tv-chip">Prayer room</span>}
+          {h.amenities?.mosqueNearby && <span className="tv-chip">Mosque nearby</span>}
+        </div>
+
+        <div className="mt-4 flex items-center justify-between">
+          <div className="text-sm" style={{color:'var(--tv-muted)'}}>From</div>
+          <div className="text-xl font-semibold" style={{color:'var(--tv-gold)'}}>€{h.priceFrom ?? "-"}</div>
         </div>
       </div>
-    </div>
-  );
+    </a>
+  )
 }
