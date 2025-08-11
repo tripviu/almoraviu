@@ -49,3 +49,8 @@ html,body{background:var(--tv-bg);color:var(--tv-ink)}
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Smooth hover elevation for cards */
+@media (prefers-reduced-motion:no-preference){
+  .hover\\:-translate-y\\[2px\\]:hover { transform: translateY(-2px); }
+}
