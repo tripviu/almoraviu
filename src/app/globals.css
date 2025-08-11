@@ -30,3 +30,14 @@ html,body{background:var(--tv-bg);color:var(--tv-ink)}
   .popular-fade-in { animation: popularFade .5s ease both; }
 }
 @keyframes popularFade { from {opacity:0; transform:translateY(6px)} to {opacity:1; transform:translateY(0)} }
+
+/* Popular grid subtle improvements */
+@media (prefers-reduced-motion:no-preference){
+  .popular-fade-in { animation: popularFade .5s ease both; }
+}
+@keyframes popularFade { from {opacity:0; transform:translateY(6px)} to {opacity:1; transform:translateY(0)} }
+
+/* Subtle thin horizontal scrollbar for rails */
+.scrollbar-thin::-webkit-scrollbar { height: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+.scrollbar-thin:hover::-webkit-scrollbar-thumb { background: #bfc5ce; }

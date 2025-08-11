@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import PopularNow from "@/components/PopularNow";
+import OffersRail from "@/components/OffersRail";
 import USPBar from "@/components/USPBar";
 import PopularDestinations from "@/components/PopularDestinations";
 import OffersCarousel from "@/components/OffersCarousel";
