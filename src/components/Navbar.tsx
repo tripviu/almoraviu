@@ -32,8 +32,8 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between" aria-label="Primary">
         {/* Brand (tekstlogo; vervang later door je SVG/PNG als je wilt) */}
-        <a href="/" className="font-bold text-lg tracking-tight text-gray-900 hover:opacity-90" aria-label="Tripviu home">
-          tripviu<span className="text-emerald-700">.com</span>
+        <a href="/" className="font-bold text-lg tracking-tight text-gray-900 hover:opacity-90" aria-label="Almoraviu home">
+          Almoraviu<span className="text-emerald-700">.com</span>
         </a>
 
         {/* Links */}

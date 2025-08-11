@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const g = GUIDES.find(x => x.slug === params.slug);
   return {
-    title: g ? `${g.title} | Guides | Tripviu` : "Guide | Tripviu",
+    title: g ? `${g.title} | Guides | Almoraviu` : "Guide | Almoraviu",
     description: g?.summary || "Halal-friendly travel guide",
   };
 }
@@ -105,7 +105,7 @@ export default function GuideDetail({ params }: { params: { slug: string } }) {
             <div>
               <h2 className="text-xl font-semibold mb-2">Practical tips</h2>
               <ul className="list-disc pl-6 space-y-1">
-                <li>How to filter hotels by halal features on Tripviu.</li>
+                <li>How to filter hotels by halal features on Almoraviu.</li>
                 <li>Timing & seasons to avoid crowds, keep costs low, and maintain comfort.</li>
                 <li>Local etiquette and helpful phrases.</li>
               </ul>

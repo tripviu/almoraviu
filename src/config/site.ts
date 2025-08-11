@@ -1,7 +1,7 @@
 export const SITE = {
-  name: "Tripviu",
+  name: "Almoraviu",
   slogan: "Halal-friendly stays. For everyone.",
-  domain: "tripviu.com",
-  logo: "/logo-tripviu.svg", // pas aan als je andere bestandsnaam gebruikt
+  domain: "Almoraviu.com",
+  logo: "/logo-Almoraviu.svg", // pas aan als je andere bestandsnaam gebruikt
   primaryColor: "#0E9F6E",
 };

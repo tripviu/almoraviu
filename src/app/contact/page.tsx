@@ -3,8 +3,8 @@ import Footer from "@/components/Footer";
 import Container from "@/components/Container";
 
 export const metadata = {
-  title: "Contact — Tripviu",
-  description: "Get in touch with Tripviu.",
+  title: "Contact — Almoraviu",
+  description: "Get in touch with Almoraviu.",
 };
 
 export default function ContactPage(){
@@ -36,8 +36,8 @@ export default function ContactPage(){
                 <button className="bg-black text-white rounded-md px-4 py-2" disabled>
                   Send (coming soon)
                 </button>
-                <a href="mailto:hello@tripviu.com" className="text-sm underline">
-                  or email us: hello@tripviu.com
+                <a href="mailto:hello@Almoraviu.com" className="text-sm underline">
+                  or email us: hello@Almoraviu.com
                 </a>
               </div>
             </div>

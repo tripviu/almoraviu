@@ -3,7 +3,7 @@ export default function SiteFooter(){
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <div className="text-white font-semibold">Tripviu</div>
+          <div className="text-white font-semibold">Almoraviu</div>
           <p className="mt-2 text-sm text-gray-400">Halal-friendly stays. For everyone.</p>
         </div>
         <div>
@@ -34,7 +34,7 @@ export default function SiteFooter(){
       </div>
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-4 text-xs text-gray-500">
-          © {new Date().getFullYear()} Tripviu. All rights reserved.
+          © {new Date().getFullYear()} Almoraviu. All rights reserved.
         </div>
       </div>
     </footer>

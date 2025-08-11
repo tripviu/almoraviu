@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Container from "@/components/Container";
 
 export const metadata = {
-  title: "About — Tripviu",
+  title: "About — Almoraviu",
   description: "Halal-friendly stays. For everyone.",
 };
 
@@ -13,9 +13,9 @@ export default function AboutPage(){
       <Navbar />
       <main className="py-12">
         <Container>
-          <h1 className="text-4xl font-semibold tracking-tight">About Tripviu</h1>
+          <h1 className="text-4xl font-semibold tracking-tight">About Almoraviu</h1>
           <p className="mt-3 text-gray-700 max-w-3xl">
-            Tripviu helps travelers find hotels and resorts that respect Islamic values — in a way that’s welcoming for everyone.
+            Almoraviu helps travelers find hotels and resorts that respect Islamic values — in a way that’s welcoming for everyone.
             We focus on clarity (what’s halal-friendly and what isn’t), so you can book with confidence.
           </p>
 

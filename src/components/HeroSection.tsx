@@ -12,7 +12,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center px-4">
         <div className="max-w-3xl w-full text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">Tripviu</h1>
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">Almoraviu</h1>
           <p className="mt-3 text-lg md:text-xl opacity-90">Halal-friendly stays. For everyone.</p>
 
           {/* Zelfde filters als /search: city, minStars, maxPrice, halalScore */}

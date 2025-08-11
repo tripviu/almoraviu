@@ -29,7 +29,7 @@ export default function SignInModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold">Sign in to Tripviu</h3>
+          <h3 className="text-lg font-semibold">Sign in to Almoraviu</h3>
           <button onClick={onClose} className="text-gray-500 hover:text-black">✕</button>
         </div>
         <form className="mt-4 space-y-3">
