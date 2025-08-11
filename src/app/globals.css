@@ -41,3 +41,11 @@ html,body{background:var(--tv-bg);color:var(--tv-ink)}
 .scrollbar-thin::-webkit-scrollbar { height: 8px; }
 .scrollbar-thin::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
 .scrollbar-thin:hover::-webkit-scrollbar-thumb { background: #bfc5ce; }
+
+/* Ensure multi-line clamp works broadly */
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,42 +1,87 @@
-function StarRow({ n=5 }:{ n?:number }) {
-  return (
-    <div className="flex gap-1 text-amber-500" aria-label={`${n} out of 5 stars`}>
-      {Array.from({length:n}).map((_,i)=><span key={i}>★</span>)}
-      {Array.from({length:5-n}).map((_,i)=><span key={`e${i}`} className="text-gray-300">★</span>)}
-    </div>
-  );
-}
+"use client";
+import { useEffect, useRef, useState } from "react";
+import ReviewCard from "./ReviewCard";
+import Skeleton from "./Skeleton";
 
-type T = { name:string; text:string; city:string; rating:number; avatar?:string };
+type Review = Parameters<typeof ReviewCard>[0]["r"];
 
-const ITEMS:T[] = [
-  { name:"Amina K.", city:"Istanbul", rating:5, text:"Eindelijk een site waar halal-voorzieningen duidelijk zijn. Boeken was snel en transparant." },
-  { name:"Youssef R.", city:"Dubai", rating:4, text:"Top selectie en fijne filters. Prijzen helder en geen verrassingen." },
-  { name:"Zahra M.", city:"Makkah", rating:5, text:"Halal score hielp enorm bij onze keuze. Heel prettig en veilig gevoel." },
+const DUMMY: Review[] = [
+  {
+    id:"r1",
+    name:"Amina",
+    country:"Netherlands",
+    city:"Istanbul",
+    avatar:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop",
+    rating:4.8,
+    text:"Loved how easy it was to find halal-friendly hotels. The prayer room filter saved me so much time!",
+    date:"2025-08-10"
+  },
+  {
+    id:"r2",
+    name:"Yusuf",
+    country:"UK",
+    city:"Dubai",
+    avatar:"https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop",
+    rating:5.0,
+    text:"Accurate info on no-alcohol properties. Finally a platform that respects our values without excluding anyone.",
+    date:"2025-07-22"
+  },
+  {
+    id:"r3",
+    name:"Sofia",
+    country:"Germany",
+    city:"Makkah",
+    avatar:"https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400&auto=format&fit=crop",
+    rating:4.7,
+    text:"The app is beautiful and fast. Loved the clear halal score and proximity to mosques.",
+    date:"2025-06-12"
+  },
+  {
+    id:"r4",
+    name:"Karim",
+    country:"France",
+    city:"Doha",
+    avatar:"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop",
+    rating:4.9,
+    text:"Great deals and honest descriptions. Booking felt safer and simpler.",
+    date:"2025-05-28"
+  }
 ];
 
-export default function Testimonials(){
+export default function Testimonials() {
+  const [loading, setLoading] = useState(true);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const scroller = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => { setReviews(DUMMY); setLoading(false); }, 600);
+    return () => clearTimeout(t);
+  }, []);
+
+  function scrollBy(delta:number){
+    scroller.current?.scrollBy({ left: delta, behavior: "smooth" });
+  }
+
   return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-xl md:text-2xl font-semibold">What travelers say</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {ITEMS.map((t,i)=>(
-            <div key={i} className="rounded-xl border bg-white p-5 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                  <img src={t.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(t.name)}`} alt={t.name} className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <div className="font-medium">{t.name}</div>
-                  <div className="text-xs text-gray-600">{t.city}</div>
-                </div>
-              </div>
-              <div className="mt-3"><StarRow n={t.rating} /></div>
-              <p className="mt-3 text-sm text-gray-700">{t.text}</p>
-            </div>
-          ))}
+    <section className="max-w-7xl mx-auto px-4 py-10">
+      <div className="flex items-end justify-between mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-tight">What travelers say</h2>
+        <div className="flex gap-2">
+          <button onClick={()=>scrollBy(-360)} className="h-9 w-9 rounded-full border bg-white hover:bg-gray-50">‹</button>
+          <button onClick={()=>scrollBy(360)} className="h-9 w-9 rounded-full border bg-white hover:bg-gray-50">›</button>
         </div>
+      </div>
+
+      <div ref={scroller} className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-thin">
+        {loading
+          ? Array.from({length:4}).map((_,i)=>(
+              <div key={i} className="w-[300px] sm:w-[360px] shrink-0">
+                <Skeleton className="h-24 w-full" />
+                <Skeleton className="h-24 mt-3 w-full" />
+              </div>
+            ))
+          : reviews.map(r => <ReviewCard key={r.id} r={r} />)
+        }
       </div>
     </section>
   );
