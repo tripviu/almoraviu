@@ -11,3 +11,22 @@
   --tv-card:#ffffff;
 }
 html,body{background:var(--tv-bg);color:var(--tv-ink)}
+
+/* === Hero premium styles === */
+.hero-slide{
+  background-size: cover;
+  background-position: center;
+  transition: opacity .9s ease, transform 6s ease;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.animate-fade-up { animation: fade-up .6s ease both; }
+
+/* Popular grid subtle improvements */
+@media (prefers-reduced-motion:no-preference){
+  .popular-fade-in { animation: popularFade .5s ease both; }
+}
+@keyframes popularFade { from {opacity:0; transform:translateY(6px)} to {opacity:1; transform:translateY(0)} }
