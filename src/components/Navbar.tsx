@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
@@ -12,59 +12,32 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={[
-        "sticky top-0 z-50 border-b transition",
-        "bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/65",
-        scrolled ? "shadow-sm" : "shadow-none",
-      ].join(" ")}
-      role="banner"
-    >
-      <nav className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between" aria-label="Primary">
-        {/* Brand (tekstlogo; vervang later door je SVG/PNG als je wilt) */}
-        <a href="/" className="font-bold text-lg tracking-tight text-gray-900 hover:opacity-90" aria-label="Almoraviu home">
-          Almoraviu<span className="text-emerald-700">.com</span>
-        </a>
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+        <Link href="/" className="font-semibold text-lg tracking-tight">
+          <span className="text-gray-900">Almoraviu</span>
+          <span className="text-emerald-600">.com</span>
+        </Link>
 
-        {/* Links */}
-        <ul className="hidden md:flex items-center gap-6 text-[15px]">
-          {links.map((l) => {
-            const active = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href.split("?")[0]);
+        <ul className="flex items-center gap-6 text-sm">
+          {links.map(l => {
+            const active = l.href === "/" ? pathname === "/" : pathname?.startsWith(l.href.replace(/\?.*$/,""));
             return (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
-                  className={[
-                    "hover:text-gray-900 transition",
-                    active ? "text-gray-900 font-semibold border-b-2 border-emerald-600 pb-0.5" : "text-gray-600",
-                  ].join(" ")}
+                  className={`hover:text-black ${
+                    active ? "text-black underline underline-offset-4" : "text-gray-700"
+                  }`}
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             );
           })}
         </ul>
-
-        {/* Mobile menu placeholder (optioneel later) */}
-        <a
-          href="/search"
-          className="md:hidden rounded-md border px-3 py-1.5 text-sm text-gray-700 bg-white"
-          aria-label="Open search"
-        >
-          Search
-        </a>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 }

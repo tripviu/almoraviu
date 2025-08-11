@@ -1,31 +1,18 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
 
-export const metadata: Metadata = {
-  title: "Almoraviu — Halal-friendly stays for everyone",
-  description: "Discover and book halal-friendly hotels worldwide. Filters for halal food, no alcohol, prayer spaces and more.",
-  metadataBase: new URL("https://Almoraviu.com"),
-  openGraph: {
-    title: "Almoraviu — Halal-friendly stays for everyone",
-    description: "Discover and book halal-friendly hotels worldwide.",
-    url: "https://Almoraviu.com",
-    siteName: "Almoraviu",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Almoraviu" }],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Almoraviu — Halal-friendly stays for everyone",
-    description: "Discover and book halal-friendly hotels worldwide.",
-    images: ["/og.jpg"],
-  },
+export const metadata = {
+  title: "Almoraviu — Halal-friendly stays. For everyone.",
+  description: "Find halal-friendly hotels worldwide with clear filters and honest pricing.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-white text-gray-900">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

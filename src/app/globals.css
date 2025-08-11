@@ -72,3 +72,6 @@ h1, h2, h3 { letter-spacing: -0.01em; }
   max-width: 72ch;
 }
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Subtle top spacing helper when sticky nav overlaps */
+header.relative { scroll-margin-top: 4rem; }
