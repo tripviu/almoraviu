@@ -54,3 +54,7 @@ html,body{background:var(--tv-bg);color:var(--tv-ink)}
 @media (prefers-reduced-motion:no-preference){
   .hover\\:-translate-y\\[2px\\]:hover { transform: translateY(-2px); }
 }
+
+/* Premium polish for headings & subtle shadows */
+h1, h2, h3 { letter-spacing: -0.01em; }
+.shadow-soft { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
